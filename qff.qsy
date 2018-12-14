@@ -1,0 +1,63 @@
+meta:
+  id: qff
+  file-extension: qff
+  endian: le
+  encoding: ascii
+
+seq:
+  - id: header
+    type: header
+  - id: records
+    type: record
+    repeat: eos
+
+types:
+  header:
+    seq:
+      - id: magic
+        contents: "QH<1.00>"
+  record:
+    seq:
+      - id: feeder
+        type: u2
+      - id: quantity
+        type: u2
+      - id: component
+        type: strz
+        size: 26
+      - id: unk2
+        size: 2
+      - id: step
+        type: u2
+        enum: step
+      - id: x
+        type: f4
+      - id: y
+        type: f4
+      - id: components_x
+        type: u2
+      - id: components_y
+        type: u2
+      - id: increment_x
+        type: f4
+      - id: increment_y
+        type: f4
+      - id: unk3
+        size: 10
+      - id: footprint
+        type: strz
+        size: 21
+      - id: unk4
+        size: 4
+      - id: z
+        type: f4
+      - id: notes
+        type: strz
+        size: 25
+
+enums:
+  step:
+    0: c
+    1: m
+    2: l
+    3: d

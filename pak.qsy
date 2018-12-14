@@ -1,0 +1,55 @@
+meta:
+  id: pak
+  file-extension: pak
+  endian: le
+  encoding: ascii
+
+seq:
+  - id: header
+    type: header
+  - id: records
+    type: record
+    repeat: eos
+
+types:
+  header:
+    seq:
+      - id: magic
+        contents: "QH<1.00>"
+  record:
+    seq:
+      - id: code
+        type: u2
+      - id: package
+        type: strz
+        size: 22
+      - id: notes
+        type: strz
+        size: 24
+      - id: x
+        type: f4
+      - id: y
+        type: f4
+      - id: z
+        type: f4
+      - id: unk2
+        size: 4
+      - id: nozzle
+        type: str
+        size: 2
+      - id: unk3
+        size: 7
+      - id: orientation
+        type: f4
+      - id: centering_x
+        type: f4
+      - id: centering_y
+        type: f4
+      - id: z_offset
+        type: f4
+      - id: tolerance
+        type: f4
+      - id: algorithm
+        type: b8
+      - id: data
+        size: 146

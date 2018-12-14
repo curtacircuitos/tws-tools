@@ -1,0 +1,50 @@
+meta:
+  id: qfz
+  file-extension: qfz
+  endian: le
+  encoding: ascii
+
+seq:
+  - id: header
+    type: header
+  - id: records
+    type: record
+    repeat: eos
+
+types:
+  header:
+    seq:
+      - id: magic
+        contents: "QLVer1.1-Quadra Board Ref. File. \n\n\r"
+      - id: eof
+        size: 1
+
+  record:
+    seq:
+      - id: board
+        type: u2
+      - id: zero_x
+        type: f4
+      - id: zero_y
+        type: f4
+      - id: delta_theta_rad
+        type: f4
+      - id: notes
+        type: strz
+        size: 26
+      - id: assemble
+        type: u2
+        enum: assemble
+      - id: unk1
+        size: 2
+      - id: reference_x
+        type: f4
+      - id: reference_y
+        type: f4
+      - id: unk2
+        size: 17
+
+enums:
+  assemble:
+    0: n
+    1: y

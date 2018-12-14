@@ -1,0 +1,74 @@
+meta:
+  id: qpf
+  file-extension: qpf
+  endian: le
+  encoding: ascii
+
+seq:
+  - id: header
+    type: header
+  - id: records
+    type: record
+    repeat: eos
+
+types:
+  header:
+    seq:
+      - id: magic
+        contents: "QLVer1.0-Quadra Program File.\n\n\r"
+      - id: customer
+        type: strz
+        size: 15
+      - id: last_update
+        type: strz
+        size: 25
+      - id: note
+        type: strz
+        size: 53
+      - id: eof
+        size: 1
+      - id: active_line
+        type: u2
+      - id: filesize
+        type: u4
+  record:
+    seq:
+      - id: line
+        type: u2
+      - id: designator
+        type: strz
+        size: 17
+      - id: component
+        type: strz
+        size: 26
+      - id: x
+        type: f4
+      - id: y
+        type: f4
+      - id: rotation
+        type: f4
+      - id: nozzle
+        type: str
+        size: 1
+      - id: feeder
+        type: u2
+      - id: dispense
+        type: b4
+      - id: mount
+        type: b4
+      - id: unk1
+        size: 2
+      - id: board
+        type: u2
+      - id: unk2
+        size: 2
+      - id: footprint
+        type: strz
+        size: 21
+      - id: notes
+        type: strz
+        size: 41 # 29 na máquina
+      - id: unk3
+        size: 23
+      - id: package
+        type: u2

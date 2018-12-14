@@ -1,0 +1,35 @@
+meta:
+  id: dta
+  file-extension: dta
+  endian: le
+  encoding: ascii
+
+seq:
+  - id: magic
+    contents: "QLVer1.0-Quadra Extra Program Data File \n\n\r"
+  - id: eof
+    size: 1
+  - id: unk1
+    size: 8
+  - id: boards
+    type: u2
+  - id: unk2
+    type: u2
+  - id: components
+    type: u2
+  - id: unk3
+    type: u2
+  - id: library
+    type: strz
+    size: 7
+  - id: unk4
+    size: 2
+  - id: program
+    type: strz
+    size: 5
+  - id: unk5
+    size: 4
+  - id: thickness
+    type: f4
+  - id: unk6
+    size: 25
